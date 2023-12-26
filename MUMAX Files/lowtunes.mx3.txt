@@ -1,0 +1,49 @@
+setgridsize(175,74,1)
+setcellsize(1e-9,1e-9,1e-9)
+
+a:= Rect(101e-9,74e-9)
+b:= Circle(74e-9).transl(-50.5e-9,0,0)
+c:= Circle(74e-9).transl(50.5e-9,0,0)
+
+h:= b.add(a.add(c))
+setgeom(h)
+Msat = 580e3
+
+Aex = 15e-12
+
+Dind = 3e-3
+
+defregion(1,xrange(-87.5e-9,-62.5e-9))
+defregion(2,xrange(-62.5e-9,-37.5e-9))
+
+defregion(3,xrange(-37.5e-9,-12.5e-9))
+
+defregion(4,xrange(-12.5e-9,12.5e-9))
+
+defregion(5,xrange(12.5e-9,37.5e-9))
+
+defregion(6,xrange(37.5e-9,62.5e-9))
+
+defregion(7,xrange(62.5e-9,87.5e-9))
+Ku1.setregion(1,0.86e6)
+Ku1.setregion(2,0.85e6)
+Ku1.setregion(3,0.84e6)
+Ku1.setregion(4,0.83e6)
+Ku1.setregion(5,0.82e6)
+Ku1.setregion(6,0.81e6)
+Ku1.setregion(1,0.8e6)
+
+
+
+
+Temp = 300
+AnisU = vector(0,0,1)
+alpha = 0.3
+m = neelskyrmion(-1,1).transl(0,0,0)
+minimize()
+
+autosave(m,1e-9)
+tableAutosave(1e-9)
+
+tableAdd(ext_bubblepos)
+run(100e-9)
